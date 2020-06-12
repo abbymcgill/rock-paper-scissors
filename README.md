@@ -1,0 +1,1 @@
+rock paper scissors project to use fundamentals of JavaScript

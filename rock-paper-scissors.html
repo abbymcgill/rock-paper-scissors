@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rock Paper Scissors Game</title>
+    </head>
+    <body>
+        <script>
+            function computerPlay(){
+                const computerOptions = ['rock', 'paper', 'scissors'];
+                const randomComputerOption = computerOptions[Math.floor(Math.random()*computerOptions.length)];
+                console.log('The computer chose ' + randomComputerOption + '.');
+                return randomComputerOption;
+            }
+            function playerHand(playerChoice) {
+                let playerChoiceLower = playerChoice.toLowerCase();
+                if (playerChoiceLower == 'rock' || playerChoiceLower == 'paper' || playerChoiceLower == 'scissors') {
+                    return playerChoiceLower;
+                }
+                else {
+                    console.log('Make sure you choose rock, paper, or scissors!')
+                }
+            }
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === computerSelection) {
+                    return 'You tied! Play again!';
+                }
+                else if (playerSelection == 'rock' && computerSelection == 'paper') {
+                    addPoints('computer');
+                    return 'You lose! Paper beats rock!';
+                }
+                else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+                    addPoints('player');
+                    return 'You win! Rock beats scissors!';
+                }
+                else if (playerSelection == 'paper' && computerSelection == 'rock') {
+                    addPoints('player');
+                    return 'You win! Paper beats rock!';
+                }
+                else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+                    addPoints('computer');
+                    return 'You lose! Scissors beat paper!';
+                }
+                else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+                    addPoints('player');
+                    return 'You win! Scissors beat paper';
+                }
+                else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+                    addPoints('computer');
+                    return 'You lose! Rock beats scissors!';
+                }
+                else {
+                    return 'That is not an option! Try again!';
+                }
+            }
+            function game() {
+                let playerSelection1 = playerHand(prompt('Choose rock, paper, or scissors.'));
+                let computerSelection1 = computerPlay();
+                console.log(playRound (playerSelection1, computerSelection1));
+                console.log('Round 1');
+                console.log('Your points: ' + playerPoints);
+                console.log('Computer points: ' + computerPoints);
+
+                let playerSelection2 = playerHand(prompt('Choose rock, paper, or scissors.'));
+                let computerSelection2 = computerPlay();
+                console.log(playRound (playerSelection2, computerSelection2));
+                console.log('Round 2');
+                console.log('Your points: ' + playerPoints);
+                console.log('Computer points: ' + computerPoints);
+
+                let playerSelection3 = playerHand(prompt('Choose rock, paper, or scissors.'));
+                let computerSelection3 = computerPlay();
+                console.log(playRound (playerSelection3, computerSelection3));
+                console.log('Round 3');
+                console.log('Your points: ' + playerPoints);
+                console.log('Computer points: ' + computerPoints);
+
+                let playerSelection4 = playerHand(prompt('Choose rock, paper, or scissors.'));
+                let computerSelection4 = computerPlay();
+                console.log(playRound (playerSelection4, computerSelection4));
+                console.log('Round 4');
+                console.log('Your points: ' + playerPoints);
+                console.log('Computer points: ' + computerPoints);
+
+                let playerSelection5 = playerHand(prompt('Choose rock, paper, or scissors.'));
+                let computerSelection5 = computerPlay();
+                console.log(playRound (playerSelection5, computerSelection5));
+                console.log('Round 5');
+                console.log('Your points: ' + playerPoints);
+                console.log('Computer points: ' + computerPoints);
+
+                if (computerPoints>playerPoints){
+                    console.log('Too bad! The computer won!\nThe score was ' + computerPoints + '-' + playerPoints + '.');
+                }
+                else if (playerPoints>computerPoints){
+                    console.log('Congrats! You won!\nThe score was ' + playerPoints + '-' + computerPoints + '.');
+                }
+                else {
+                    console.log('Whoa! You tied with the computer!\nThe score was ' + computerPoints + '-' + playerPoints + '.');
+                }
+
+            }
+            function addPoints(winner) {
+                if (winner == 'computer') {
+                    computerPoints++;
+                }
+                else {
+                    playerPoints++;
+                }
+            }
+            let computerPoints = 0;
+            let playerPoints = 0;
+            game();
+        </script>
+    </body>
+</html>
